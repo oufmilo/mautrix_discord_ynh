@@ -1,21 +1,24 @@
 [Unit]
-Description=Small description of the service
-After=network.target
+Description=mautrix-discord bridge
+After=matrix-synapse.service
 
 [Service]
 Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/script
+ExecStart=__INSTALL_DIR__/__APP_BIN__ -c __INSTALL_DIR__/config.yaml
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
+Restart=always
+RestartSec=3
 
 # Sandboxing options to harden security
 # Depending on specificities of your service/app, you may need to tweak these
 # .. but this should be a good baseline
 # Details for these options: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
 NoNewPrivileges=yes
+MemoryDenyWriteExecute=true
 PrivateTmp=yes
 PrivateDevices=yes
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
