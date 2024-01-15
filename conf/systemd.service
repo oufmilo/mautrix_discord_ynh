@@ -17,13 +17,16 @@ RestartSec=3
 # Depending on specificities of your service/app, you may need to tweak these
 # .. but this should be a good baseline
 # Details for these options: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+ReadWritePaths=__INSTALL_DIR__ /var/log/__APP__
 NoNewPrivileges=yes
 MemoryDenyWriteExecute=true
 PrivateTmp=yes
 PrivateDevices=yes
+PrivateUsers=true
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
 RestrictNamespaces=yes
 RestrictRealtime=yes
+RestrictSUIDSGID=true
 DevicePolicy=closed
 ProtectClock=yes
 ProtectHostname=yes
@@ -32,8 +35,10 @@ ProtectSystem=full
 ProtectControlGroups=yes
 ProtectKernelModules=yes
 ProtectKernelTunables=yes
+ProtectKernelLogs=true
 LockPersonality=yes
 SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
 SystemCallFilter=~@clock @debug @module @mount @obsolete @reboot @setuid @swap @cpu-emulation @privileged
 
 # Denying access to capabilities that should not be relevant for webapps
