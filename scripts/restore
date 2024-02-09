@@ -57,6 +57,7 @@ systemctl enable $app.service --quiet
 yunohost service add $app --description="Matrix Discord pupetting bridge for YunoHost" --log="/var/log/$app/$app.log"
 
 ynh_restore_file --origin_path="/etc/logrotate.d/$app"
+ynh_restore_file --origin_path="$install_dir/mautrix-discord"
 
 #=================================================
 # GENERIC FINALIZATION
