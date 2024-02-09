@@ -36,12 +36,6 @@ ynh_backup --src_path="/etc/logrotate.d/$app"
 ynh_backup --src_path="/etc/systemd/system/$app.service"
 
 #=================================================
-# BACKUP CONFIG FILE
-#=================================================
-
-ynh_backup --src_path="$install_dir/mautrix-discord"
-
-#=================================================
 # BACKUP THE POSTGRESQL DATABASE
 #=================================================
 ynh_print_info --message="Backing up the PostgreSQL database..."
