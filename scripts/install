@@ -78,7 +78,7 @@ ynh_use_logrotate
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Matrix Discord pupetting bridge for YunoHost" --log="/var/log/$app/$app.log"
 
 #=================================================
 # APP INITIAL CONFIGURATION
